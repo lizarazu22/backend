@@ -1,0 +1,20 @@
+# node modules
+node_modules/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# env
+.env
+.env.local
+.env.production
+
+# uploads locales
+uploads/
+
+# sistema
+.DS_Store
+.idea/
+.vscode/
