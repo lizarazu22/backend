@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 
 // ✅ CORS para localhost:3000 o variable de entorno
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [process.env.CLIENT_URL, 'http://localhost:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'production') {
         styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://cdn.jsdelivr.net'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: ["'self'", 'data:', 'http://localhost:3000', 'http://localhost:5000', 'https://res.cloudinary.com'],
-        connectSrc: ["'self'", 'http://localhost:3000', 'https://openrouter.ai'],
+        connectSrc: ["'self'", 'http://localhost:3000', process.env.CLIENT_URL, 'https://openrouter.ai'],
         objectSrc: ["'none'"]
       },
     },
