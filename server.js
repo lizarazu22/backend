@@ -27,8 +27,20 @@ app.disable('x-powered-by');
 app.use(morgan('dev'));
 
 // ✅ CORS para localhost:3000 o variable de entorno
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://frontend-qd6aboiww-ignacios-projects-8e48b12a.vercel.app',
+  'https://frontend-b8w1enngb-ignacios-projects-8e48b12a.vercel.app',
+  'https://frontend-phi-six-61.vercel.app'
+];
+
 app.use(cors({
-  origin: [process.env.CLIENT_URL, 'http://localhost:3000'],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
