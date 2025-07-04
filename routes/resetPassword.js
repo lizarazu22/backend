@@ -31,7 +31,7 @@ router.post('/forgot-password', resetPasswordLimiter, async (req, res) => {
     const resetLink = `${process.env.CLIENT_URL}/reset-password/${usuario._id}/${token}`;
 
     await transporter.sendMail({
-      from: '"Tienda Textil" <ignaciolizarazu00@gmail.com>',
+      from: '"Tienda Textil" <ignaciolizarazuaramayo@gmail.com>',
       to: usuario.email,
       subject: 'Restablecer contraseña',
       html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p><a href="${resetLink}">${resetLink}</a>`,
